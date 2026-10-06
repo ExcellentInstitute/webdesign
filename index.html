@@ -511,53 +511,62 @@
                                 ${topic.interactiveCode.css}
 
 /* --- Print & PDF Export Styling --- */
-
-                                @media print {
-                                    body, .main-container { height: auto; overflow: visible; display: block; background-color: transparent !important; }
-                                    .sidebar, .header, .action-btns, .dashboard-grid, .hero { display: none !important; }
-                                    .content-area { padding: 0; cursor: auto; background-color: transparent !important; }
-                                    .content-wrapper { margin: 0; padding: 0; box-shadow: none; border: none; max-width: 100%; background: transparent !important; }
-                                    .topic-card { box-shadow: none; border: none; padding: 0; margin-bottom: 40px; page-break-inside: auto; background: transparent; }
-                                    .chapter-header { box-shadow: none; border: none; padding: 0; margin-bottom: 20px; background: transparent; border-left: none; page-break-before: always;}
-                                    .note-section { pointer-events: auto; }
-                                    .watermark-bg { display: block; opacity: 0.08; width: 60vw; max-width: 600px; }
-                                    h1 { color: #000; }
-                                    h3 { color: #000; border-bottom: 1px solid #ccc; }
-                                    img { page-break-inside: avoid; border: none; }
-                                    .shortcut-box { border: 1px solid #000 !important; background: transparent !important; color: #000 !important; }
-
-/* --- MAGICAL PRINT REORGANIZATION FOR INTERACTIVE CODE --- */
-                                    .playground-tabs { display: none !important; } /* Hide the clickable tabs on paper */
-                                    .code-playground { border: none !important; box-shadow: none !important; margin-bottom: 40px !important; background: transparent !important; }
-                                    
-/* Force all code panels to show, stack, and turn white/black for the printer */
-                                    .code-panel { 
-                                        display: block !important; 
-                                        background: #f8fafc !important; 
-                                        color: #000 !important; 
-                                        border: 1px solid #94a3b8 !important; 
-                                        padding: 15px !important; 
-                                        margin-bottom: 20px !important; 
-                                        height: auto !important; 
-                                        max-height: none !important; 
-                                        page-break-inside: avoid; 
-                                        overflow: visible !important;
-                                    }
+        @media print {
+            body, .main-container { height: auto; overflow: visible; display: block; background-color: transparent !important; }
+            .sidebar, .header, .action-btns, .dashboard-grid, .hero { display: none !important; }
+            .content-area { padding: 0; cursor: auto; background-color: transparent !important; }
+            .content-wrapper { margin: 0; padding: 0; box-shadow: none; border: none; max-width: 100%; background: transparent !important; }
             
-/* Automatically add titles above the code boxes on the printed paper */
-                                    .code-panel[id^="html-panel"]::before { content: "📄 HTML Code:"; display: block; font-weight: bold; margin-bottom: 10px; color: #1e40af; border-bottom: 1px solid #ccc; padding-bottom: 5px;}
-                                    .code-panel[id^="css-panel"]::before { content: "🎨 CSS Code:"; display: block; font-weight: bold; margin-bottom: 10px; color: #1e40af; border-bottom: 1px solid #ccc; padding-bottom: 5px;}
-                                    .code-panel[id^="js-panel"]::before { content: "⚡ JavaScript Code:"; display: block; font-weight: bold; margin-bottom: 10px; color: #1e40af; border-bottom: 1px solid #ccc; padding-bottom: 5px;}
+            /* Strip the UI cards back to clean textbook format */
+            .topic-card { box-shadow: none !important; border: none !important; padding: 0 !important; margin-bottom: 40px !important; background: transparent !important; page-break-inside: avoid; }
+            .chapter-header { box-shadow: none !important; border: none !important; padding: 0 !important; margin-bottom: 20px !important; background: transparent !important; border-left: none !important; page-break-before: always;}
+            .note-section { pointer-events: auto; }
+            .watermark-bg { display: block; opacity: 0.08; width: 60vw; max-width: 600px; }
             
-/* Force the live preview frame to print at the bottom of the stack */
-                                    .preview-iframe { 
-                                        display: block !important; 
-                                        height: 350px !important; 
-                                        border: 2px solid #0f172a !important; 
-                                        margin-bottom: 20px !important; 
-                                        page-break-inside: avoid; 
-                                    }
-                                }
+            /* Clean Text Typography */
+            h1 { color: #000 !important; padding: 0; margin-bottom: 10px; }
+            h1:first-of-type { page-break-before: auto; }
+            h3 { color: #000 !important; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 10px; }
+            p, .topic-text { color: #000 !important; }
+            img { page-break-inside: avoid; border: none; max-width: 100%; }
+            .shortcut-box { border: 1px solid #000 !important; background: transparent !important; color: #000 !important; }
+            kbd { border: 1px solid #000 !important; box-shadow: none !important; background: transparent !important; color: #000 !important; }
+
+            /* --- MAGIC SEQUENTIAL CODE PRINTING --- */
+            .playground-tabs { display: none !important; } /* Hide the dark UI tabs */
+            .code-playground { border: none !important; box-shadow: none !important; background: transparent !important; margin: 20px 0 !important; }
+            
+            /* Force HTML, CSS, JS panels to stack and print cleanly */
+            .code-panel { 
+                display: block !important; 
+                background: #ffffff !important; 
+                color: #000000 !important; 
+                border: 1px dashed #64748b !important; 
+                padding: 15px !important; 
+                margin-bottom: 15px !important; 
+                height: auto !important; 
+                max-height: none !important; 
+                white-space: pre-wrap !important;
+                page-break-inside: avoid;
+            }
+            
+            /* Strip out all neon syntax highlighting colors for the printer */
+            .code-panel code, .code-panel span { color: #000000 !important; font-weight: normal !important; }
+            
+            /* Inject automatic titles above the printed code boxes */
+            .code-panel[id^="html-panel"]::before { content: "📄 HTML Code:"; display: block; font-weight: bold; margin-bottom: 10px; color: #000; border-bottom: 1px solid #000; padding-bottom: 5px;}
+            .code-panel[id^="css-panel"]::before { content: "🎨 CSS Code:"; display: block; font-weight: bold; margin-bottom: 10px; color: #000; border-bottom: 1px solid #000; padding-bottom: 5px;}
+            .code-panel[id^="js-panel"]::before { content: "⚡ JavaScript Code:"; display: block; font-weight: bold; margin-bottom: 10px; color: #000; border-bottom: 1px solid #000; padding-bottom: 5px;}
+            
+            /* Print the live preview frame at the very bottom of the stack */
+            .preview-iframe { 
+                display: block !important; 
+                height: 300px !important; 
+                border: 2px solid #000 !important; 
+                margin-bottom: 20px !important; 
+                page-break-inside: avoid;
+            }
+        }
                                 
                             </style>
                         </head>
