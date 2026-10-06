@@ -254,3 +254,224 @@ function activateSystem() {
         ]
     }
 ];
+
+// ==========================================
+// BATCH 2: LAYOUTS, JAVASCRIPT, AND DEPLOYMENT
+// ==========================================
+
+// ==========================================
+// MODULE 3: MASTER OF LAYOUTS (FLEXBOX & GRID)
+// ==========================================
+webBookData.push({
+    id: "module3",
+    title: "Module 3: Layout Design (Flexbox & Grid)",
+    topics: [
+        {
+            heading: "The Power of Flexbox",
+            text: "Before Flexbox, putting two boxes side-by-side on a website was a nightmare. Flexbox makes it mathematically perfect with just 3 lines of code! It is best used for 1-Dimensional layouts (like a navigation bar or a single row of images).<br><br>By using <code>justify-content</code>, you can push boxes to the edges, center them, or space them perfectly.",
+            shortcut: "Flexbox aligns items perfectly across a single row or a single column.",
+            interactiveCode: {
+                html: `<div class="navbar">
+  <div class="logo">MySite</div>
+  <div class="links">
+    <span>Home</span>
+    <span>About</span>
+    <span>Contact</span>
+  </div>
+</div>`,
+                css: `.navbar {
+  display: flex;
+  justify-content: space-between; /* Pushes Logo to left, Links to right */
+  align-items: center; /* Centers them vertically */
+  background: #1e293b; color: white;
+  padding: 15px 30px; border-radius: 8px;
+}
+.links span { margin-left: 15px; cursor: pointer; color: #38bdf8; }`,
+                js: ``
+            }
+        },
+        {
+            heading: "CSS Grid (Building Galleries)",
+            text: "While Flexbox is for rows, CSS Grid is for 2-Dimensional layouts (Rows AND Columns at the same time!). It is perfect for building photo galleries, complex dashboard layouts, or calculators. Look at how easily we can create a grid of colored cards by just telling CSS we want exactly 3 columns!",
+            shortcut: "Check the CSS code to see the magic 'grid-template-columns' property!",
+            interactiveCode: {
+                html: `<div class="gallery">
+  <div class="card card1">Box 1</div>
+  <div class="card card2">Box 2</div>
+  <div class="card card3">Box 3</div>
+  <div class="card card4">Box 4</div>
+</div>`,
+                css: `.gallery {
+  display: grid;
+  grid-template-columns: auto auto auto; /* Creates exactly 3 columns! */
+  gap: 15px;
+}
+.card {
+  padding: 30px; color: white; text-align: center;
+  font-weight: bold; border-radius: 10px;
+}
+.card1 { background: #f43f5e; }
+.card2 { background: #3b82f6; }
+.card3 { background: #eab308; }
+.card4 { background: #10b981; }`,
+                js: ``
+            }
+        }
+    ]
+});
+
+// ==========================================
+// MODULE 4: THE BRAIN (JAVASCRIPT)
+// ==========================================
+webBookData.push({
+    id: "module4",
+    title: "Module 4: JavaScript & Interactivity",
+    topics: [
+        {
+            heading: "Variables and Data Types",
+            text: "HTML and CSS just sit there. JavaScript is the brain! <br><br><strong>Variables</strong> are like buckets that hold information. We create a bucket using the word <code>let</code>. A variable can hold Text (String), Numbers, or True/False (Boolean).",
+            shortcut: "Slide to the Preview tab. The JavaScript uses 'document.write' to instantly print the math answer on the screen!",
+            interactiveCode: {
+                html: `<h2>JavaScript Math:</h2>`,
+                css: `h2 { color: #333; font-family: sans-serif; }`,
+                js: `let studentName = "Priya"; // String
+let age = 22; // Number
+let isEnrolled = true; // Boolean
+
+let mathScore = 85;
+let scienceScore = 90;
+let total = mathScore + scienceScore;
+
+document.write("Student: " + studentName + "<br>");
+document.write("Total Marks: " + total);`
+            }
+        },
+        {
+            heading: "Logic (If / Else) & Arrays",
+            text: "Computers are smart because they can make decisions using <strong>If/Else</strong> statements.<br>We also use <strong>Arrays</strong>, which are special lists that hold multiple items in one single variable bucket. (e.g., a list of groceries).",
+            shortcut: "In JavaScript arrays, we start counting from ZERO, not one!",
+            interactiveCode: {
+                html: `<div id="result"></div>`,
+                css: `#result { padding: 20px; background: #e0e7ff; color: #3730a3; font-weight: bold; border-radius: 8px; }`,
+                js: `let marks = 75;
+let message = "";
+
+// The Brain making a decision
+if (marks >= 60) {
+  message = "Congratulations! You passed the exam.";
+} else {
+  message = "Work harder next time!";
+}
+
+// Arrays (A list of items)
+let courses = ["Web Design", "Tally", "C++"];
+let firstCourse = courses[0]; // Gets "Web Design"
+
+document.getElementById("result").innerHTML = message + "<br>Your first class is: " + firstCourse;`
+            }
+        },
+        {
+            heading: "Event Handling & The DOM",
+            text: "The DOM (Document Object Model) is how JavaScript reads your HTML. JavaScript can grab any HTML tag using <code>getElementById</code> and change it LIVE on the screen without reloading the page! <br><br>Let's use an 'Event' (clicking a button) to trigger a 'Function' that changes the DOM.",
+            shortcut: "Slide to Preview, and click the button to see JavaScript manipulate the HTML live!",
+            interactiveCode: {
+                html: `<div id="status-box" class="box">System is Waiting...</div>
+<br>
+<button onclick="activateSystem()" class="btn">Activate System</button>`,
+                css: `.box {
+  padding: 20px; background: #334155; color: white;
+  font-family: monospace; font-size: 18px;
+  text-align: center; border-radius: 8px;
+}
+.btn {
+  background: #3b82f6; color: white; border: none; 
+  padding: 10px 20px; border-radius: 5px; cursor: pointer;
+}`,
+                js: `// This is the JavaScript Function!
+function activateSystem() {
+  // 1. Grab the HTML box by its ID
+  let box = document.getElementById('status-box');
+  
+  // 2. Change the text inside the box
+  box.innerText = "System Activated! Access Granted.";
+  
+  // 3. Change the CSS color of the box
+  box.style.background = "#10b981";
+}`
+            }
+        }
+    ]
+});
+
+// ==========================================
+// MODULE 5: FUN ACTIVITY
+// ==========================================
+webBookData.push({
+    id: "module5",
+    title: "Module 5: Fun Animations!",
+    topics: [
+        {
+            heading: "The Bouncing Ping-Pong Ball",
+            text: "Let's combine everything we have learned! <br><br>1. We will use HTML to create a ball and a button.<br>2. We will use CSS to make the ball round, red, and add a smooth 'transition'.<br>3. We will use JavaScript to make the ball jump up into the air when the button is clicked! This is how basic video games are made on the web.",
+            shortcut: "Slide to the Preview and click 'Bounce!' to play with the code.",
+            interactiveCode: {
+                html: `<div id="game-area">
+  <div id="ball"></div>
+</div>
+<br>
+<button onclick="bounce()" class="btn">Bounce!</button>`,
+                css: `#game-area {
+  height: 150px;
+  border-bottom: 4px solid #0f172a;
+  position: relative;
+  overflow: hidden;
+}
+#ball {
+  width: 40px; height: 40px;
+  background-color: #ef4444;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  /* The magic animation line */
+  transition: bottom 0.4s ease-out; 
+}
+.btn {
+  padding: 10px 20px; background: #0f172a; 
+  color: white; cursor: pointer; border-radius: 5px; font-weight: bold;
+}`,
+                js: `function bounce() {
+  let ball = document.getElementById('ball');
+  
+  // Shoot the ball up to 100px
+  ball.style.bottom = "100px";
+  
+  // Wait half a second, then bring it back down
+  setTimeout(function() {
+    ball.style.bottom = "0px";
+  }, 400);
+}`
+            }
+        }
+    ]
+});
+
+// ==========================================
+// MODULE 6: GOING LIVE TO THE WORLD
+// ==========================================
+webBookData.push({
+    id: "module6",
+    title: "Module 6: Responsive Hosting",
+    topics: [
+        {
+            heading: "Responsive Design (Mobile Friendly)",
+            text: "A website looks great on a giant laptop screen, but what happens when you open it on a tiny mobile phone? It breaks! <br><br>We use a CSS magic spell called <strong>Media Queries</strong>. It detects the size of the user's screen. If the screen is small (like a phone), we can tell the CSS to stack boxes top-to-bottom instead of side-by-side.",
+            shortcut: "Always design for Mobile phones first! 80% of web traffic comes from smartphones."
+        },
+        {
+            heading: "Hosting Your Website for Free (Netlify)",
+            text: "Right now, your beautiful website only lives on your local 'C: Drive'. Nobody else in the world can see it. You need a <strong>Server</strong>.<br><br><strong>Netlify Drop</strong> is an incredible, free web server tool. You literally open their website, drag the folder containing your <code>index.html</code>, <code>style.css</code>, and <code>script.js</code> files, and drop it on the screen.<br><br>Within 10 seconds, Netlify will generate a live, global web link that you can share with your friends and family on WhatsApp!",
+            shortcut: "Congratulations! You have officially coded, styled, animated, and deployed a live website to the internet."
+        }
+    ]
+});
