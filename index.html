@@ -212,89 +212,57 @@
             display: flex; align-items: center; gap: 12px; font-size: 1.05rem; color: var(--primary); line-height: 1.6;
         }
 
-        /* --- LIVE CODE PLAYGROUND UI --- */
+        /* --- LIVE CODE PLAYGROUND UI WITH COPY FEATURE --- */
         .code-playground {
-            background: var(--code-bg);
-            border-radius: 12px;
-            border: 1px solid var(--code-border);
-            overflow: hidden;
-            margin: 25px 0;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            background: var(--code-bg); border-radius: 12px;
+            border: 1px solid var(--code-border); overflow: hidden;
+            margin: 25px 0; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             font-family: 'Inter', sans-serif;
         }
 
-        .playground-tabs {
-            display: flex;
-            background: var(--tab-bg);
-            border-bottom: 1px solid var(--code-border);
-        }
+        .playground-tabs { display: flex; background: var(--tab-bg); border-bottom: 1px solid var(--code-border); }
 
         .playground-tab {
-            padding: 12px 24px;
-            background: transparent;
-            border: none;
-            color: var(--tab-text);
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            border-top: 2px solid transparent;
+            padding: 12px 24px; background: transparent; border: none;
+            color: var(--tab-text); font-size: 0.95rem; font-weight: 600;
+            cursor: pointer; transition: 0.2s; border-top: 2px solid transparent;
         }
 
-        .playground-tab:hover {
-            color: var(--tab-text-active);
-            background: rgba(255,255,255,0.05);
-        }
-
-        .playground-tab.active {
-            background: var(--code-bg);
-            color: var(--tab-text-active);
-            border-top: 2px solid #38bdf8;
-        }
+        .playground-tab:hover { color: var(--tab-text-active); background: rgba(255,255,255,0.05); }
+        .playground-tab.active { background: var(--code-bg); color: var(--tab-text-active); border-top: 2px solid #38bdf8; }
 
         /* Special style for the Preview tab */
-        .playground-tab.preview-tab {
-            margin-left: auto;
-            color: #10b981;
-            border-left: 1px solid var(--code-border);
-        }
-        .playground-tab.preview-tab.active {
-            border-top: 2px solid #10b981;
-        }
+        .playground-tab.preview-tab { margin-left: auto; color: #10b981; border-left: 1px solid var(--code-border); }
+        .playground-tab.preview-tab.active { border-top: 2px solid #10b981; }
 
-        .playground-panels {
-            position: relative;
-            min-height: 250px;
-            max-height: 400px;
-        }
+        .playground-panels { position: relative; min-height: 250px; max-height: 400px; }
 
         .code-panel {
-            display: none;
-            padding: 20px;
-            margin: 0;
-            overflow-y: auto;
-            color: #d4d4d4;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 1.05rem;
-            line-height: 1.6;
-            height: 100%;
-            white-space: pre-wrap;
+            display: none; position: relative; padding: 20px; margin: 0;
+            overflow-y: auto; height: 100%;
+        }
+        .code-panel.active { display: block; }
+        
+        .code-panel pre {
+            margin: 0; font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 1.05rem; line-height: 1.6; color: #d4d4d4; white-space: pre-wrap;
         }
 
-        .code-panel.active {
-            display: block;
+        /* The New Copy Code Button Enhancement */
+        .copy-btn {
+            position: absolute; top: 15px; right: 15px;
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+            color: #d4d4d4; padding: 6px 12px; border-radius: 6px;
+            cursor: pointer; font-size: 0.85rem; font-weight: 600;
+            transition: all 0.2s; z-index: 10;
         }
+        .copy-btn:hover { background: rgba(255,255,255,0.2); color: #ffffff; }
 
         .preview-iframe {
-            display: none;
-            width: 100%;
-            height: 350px;
-            border: none;
-            background: #ffffff; /* Previews need a white canvas normally */
+            display: none; width: 100%; height: 350px;
+            border: none; background: #ffffff;
         }
-        .preview-iframe.active {
-            display: block;
-        }
+        .preview-iframe.active { display: block; }
 
         /* --- Dashboard Grid (Home View) --- */
         .hero { text-align: center; margin-bottom: 50px; background: var(--surface); padding: 50px; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
@@ -328,27 +296,20 @@
             .playground-tab { padding: 10px 15px; font-size: 0.85rem; }
         }
 
-        /* --- Print & PDF Export Styling --- */
+        /* --- Perfect Print & PDF Export Styling --- */
         @media print {
-            /* Force background colors and syntax highlighting to print! */
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                color-adjust: exact !important;
-            }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
 
             body, .main-container { height: auto; overflow: visible; display: block; background-color: transparent !important; }
-            .sidebar, .header, .action-btns, .dashboard-grid, .hero { display: none !important; }
+            .sidebar, .header, .action-btns, .dashboard-grid, .hero, .copy-btn { display: none !important; }
             .content-area { padding: 0; cursor: auto; background-color: transparent !important; }
             .content-wrapper { margin: 0; padding: 0; box-shadow: none; border: none; max-width: 100%; background: transparent !important; }
             
-            /* Strip the UI cards back to clean textbook format */
             .topic-card { box-shadow: none !important; border: none !important; padding: 0 !important; margin-bottom: 40px !important; background: transparent !important; page-break-inside: avoid; }
             .chapter-header { box-shadow: none !important; border: none !important; padding: 0 !important; margin-bottom: 20px !important; background: transparent !important; border-left: none !important; page-break-before: always;}
             .note-section { pointer-events: auto; }
             .watermark-bg { display: block; opacity: 0.08; width: 60vw; max-width: 600px; }
             
-            /* Clean Text Typography */
             h1 { color: #000 !important; padding: 0; margin-bottom: 10px; }
             h1:first-of-type { page-break-before: auto; }
             h3 { color: #000 !important; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 10px; }
@@ -357,45 +318,25 @@
             .shortcut-box { border: 1px solid #000 !important; background: transparent !important; color: #000 !important; }
             kbd { border: 1px solid #000 !important; box-shadow: none !important; background: transparent !important; color: #000 !important; }
 
-            /* --- MAGIC SEQUENTIAL CODE PRINTING --- */
-            .playground-tabs { display: none !important; } /* Hide the dark UI tabs */
+            .playground-tabs { display: none !important; } 
             .code-playground { border: none !important; box-shadow: none !important; background: transparent !important; margin: 20px 0 !important; page-break-inside: avoid; }
-            
-            /* Unlock the height limit so the iframe at the bottom doesn't get cut off */
             .playground-panels { display: block !important; height: auto !important; max-height: none !important; overflow: visible !important; }
             
-            /* Keep dark background for code panels to preserve syntax colors */
             .code-panel { 
-                display: block !important; 
-                background: #1e1e1e !important; 
-                color: #d4d4d4 !important; 
-                border: 1px solid #333333 !important; 
-                padding: 15px !important; 
-                margin-bottom: 15px !important; 
-                height: auto !important; 
-                max-height: none !important; 
-                white-space: pre-wrap !important;
-                page-break-inside: avoid;
-                overflow: visible !important;
+                display: block !important; background: #1e1e1e !important; border: 1px solid #333333 !important; 
+                padding: 15px !important; margin-bottom: 15px !important; height: auto !important; max-height: none !important; 
+                page-break-inside: avoid; overflow: visible !important;
             }
+            .code-panel pre { color: #d4d4d4 !important; white-space: pre-wrap !important; }
             
-            /* Inject automatic titles above the printed code boxes */
             .code-panel[id^="html-panel"]::before { content: "📄 HTML Code:"; display: block; font-weight: bold; margin-bottom: 10px; color: #38bdf8; border-bottom: 1px solid #333333; padding-bottom: 5px;}
             .code-panel[id^="css-panel"]::before { content: "🎨 CSS Code:"; display: block; font-weight: bold; margin-bottom: 10px; color: #d7ba7d; border-bottom: 1px solid #333333; padding-bottom: 5px;}
             .code-panel[id^="js-panel"]::before { content: "⚡ JavaScript Code:"; display: block; font-weight: bold; margin-bottom: 10px; color: #c586c0; border-bottom: 1px solid #333333; padding-bottom: 5px;}
             
-            /* Print the live preview frame at the very bottom of the stack */
             .preview-iframe { 
-                display: block !important; 
-                width: 100% !important;
-                height: 350px !important; 
-                border: 2px solid #000 !important; 
-                background: #ffffff !important;
-                margin-top: 15px !important; 
-                margin-bottom: 20px !important; 
-                page-break-inside: avoid;
-                visibility: visible !important;
-                opacity: 1 !important;
+                display: block !important; width: 100% !important; height: 350px !important; 
+                border: 2px solid #000 !important; background: #ffffff !important; margin-top: 15px !important; 
+                margin-bottom: 20px !important; page-break-inside: avoid; visibility: visible !important; opacity: 1 !important;
             }
         }
     </style>
@@ -460,7 +401,6 @@
                 const btn = document.createElement('button');
                 btn.className = 'nav-btn note-nav-btn';
                 
-                // Everything is strictly locked initially
                 let displayIcon = isPgdcaUnlocked ? '💻' : '🔒';
                 
                 btn.innerHTML = `${displayIcon} ${chapter.title.split(':')[0]}`; 
@@ -584,18 +524,16 @@
                     </div>`;
             
             chapter.topics.forEach((topic, tIndex) => {
-                let uniqueId = `ch${index}-t${tIndex}`; // Unique ID for each code playground
+                let uniqueId = `ch${index}-t${tIndex}`;
 
                 htmlContent += `
                 <div class="topic-card">
                     <h3>${topic.heading}</h3>
                     <div class="topic-text">${topic.text}</div>`;
                 
-                // --- INJECT INTERACTIVE CODE PLAYGROUND ---
+                // --- INJECT INTERACTIVE CODE PLAYGROUND WITH COPY BUTTONS ---
                 if(topic.interactiveCode) {
                     
-                    // Build the safe source document for the iframe
-                    // We inject the CSS in style tags, the HTML in body, and JS in script tags
                     const iframeContent = `
                         <html>
                         <head>
@@ -612,7 +550,6 @@
                         </body>
                         </html>
                     `;
-                    // Escape it for the srcdoc attribute
                     const safeIframeSrc = iframeContent.replace(/"/g, '&quot;');
 
                     htmlContent += `
@@ -624,13 +561,21 @@
                             <button class="playground-tab preview-tab" onclick="switchTab('${uniqueId}', 'preview')">▶ Live Preview</button>
                         </div>
                         <div class="playground-panels">
-                            <pre class="code-panel active" id="html-panel-${uniqueId}"><code style="color:#569cd6;">${escapeHtml(topic.interactiveCode.html) || "// No HTML provided"}</code></pre>
+                            <div class="code-panel active" id="html-panel-${uniqueId}">
+                                <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                                <pre><code style="color:#569cd6;">${escapeHtml(topic.interactiveCode.html) || "// No HTML provided"}</code></pre>
+                            </div>
                             
-                            <pre class="code-panel" id="css-panel-${uniqueId}"><code style="color:#d7ba7d;">${escapeHtml(topic.interactiveCode.css) || "/* No CSS provided */"}</code></pre>
+                            <div class="code-panel" id="css-panel-${uniqueId}">
+                                <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                                <pre><code style="color:#d7ba7d;">${escapeHtml(topic.interactiveCode.css) || "/* No CSS provided */"}</code></pre>
+                            </div>
                             
-                            <pre class="code-panel" id="js-panel-${uniqueId}"><code style="color:#c586c0;">${escapeHtml(topic.interactiveCode.js) || "// No JavaScript provided"}</code></pre>
+                            <div class="code-panel" id="js-panel-${uniqueId}">
+                                <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                                <pre><code style="color:#c586c0;">${escapeHtml(topic.interactiveCode.js) || "// No JavaScript provided"}</code></pre>
+                            </div>
                             
-                            <!-- The Live Magic Happens Here -->
                             <iframe class="preview-iframe" id="preview-panel-${uniqueId}" srcdoc="${safeIframeSrc}"></iframe>
                         </div>
                     </div>`;
@@ -643,10 +588,10 @@
                     </div>`;
                 }
 
-                htmlContent += `</div>`; // Close topic-card
+                htmlContent += `</div>`;
             });
             
-            htmlContent += `</div></div>`; // Close note-section & content-wrapper
+            htmlContent += `</div></div>`;
             
             contentDisplay.innerHTML = htmlContent;
             contentDisplay.scrollTop = 0;
@@ -656,24 +601,40 @@
             }
         }
 
+        // --- THE NEW COPY CODE LOGIC ---
+        window.copyCode = function(btnElement) {
+            const codeText = btnElement.nextElementSibling.innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const originalText = btnElement.innerHTML;
+                btnElement.innerHTML = "✅ Copied!";
+                btnElement.style.background = "#10b981";
+                btnElement.style.borderColor = "#10b981";
+                btnElement.style.color = "#ffffff";
+                
+                setTimeout(() => { 
+                    btnElement.innerHTML = originalText; 
+                    btnElement.style.background = "rgba(255,255,255,0.1)";
+                    btnElement.style.borderColor = "rgba(255,255,255,0.2)";
+                    btnElement.style.color = "#d4d4d4";
+                }, 2000);
+            });
+        };
+
         // --- CODE PLAYGROUND SWITCHING LOGIC ---
         window.switchTab = function(uniqueId, targetTab) {
             const playground = document.getElementById(`playground-${uniqueId}`);
             
-            // 1. Deactivate all tabs and panels in THIS specific playground
             const tabs = playground.querySelectorAll('.playground-tab');
             const panels = playground.querySelectorAll('.code-panel, .preview-iframe');
             
             tabs.forEach(t => t.classList.remove('active'));
             panels.forEach(p => p.classList.remove('active'));
             
-            // 2. Activate the clicked tab
             if(targetTab === 'html') tabs[0].classList.add('active');
             if(targetTab === 'css') tabs[1].classList.add('active');
             if(targetTab === 'js') tabs[2].classList.add('active');
             if(targetTab === 'preview') tabs[3].classList.add('active');
 
-            // 3. Activate the target panel
             document.getElementById(`${targetTab}-panel-${uniqueId}`).classList.add('active');
         };
 
@@ -684,7 +645,6 @@
             if (input === "PGDCA") {
                 isPgdcaUnlocked = true;
                 
-                // Instantly turn all 🔒 into 💻
                 document.querySelectorAll('.note-nav-btn').forEach((btn) => {
                     btn.innerHTML = btn.innerHTML.replace('🔒', '💻');
                 });
@@ -700,7 +660,6 @@
         let isDown = false, startY, scrollTop;
 
         contentDisplay.addEventListener('mousedown', (e) => {
-            // Do not drag if interacting with the code playground or cards
             if(e.target.closest('.module-card') || e.target.closest('.code-playground') || e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
             isDown = true;
             startY = e.pageY - contentDisplay.offsetTop;
