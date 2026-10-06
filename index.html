@@ -535,9 +535,8 @@
             contentDisplay.scrollTop = 0;
         }
 
-        // Helper Function to safely escape HTML tags so they display as text code
+        // Helper Function to escape HTML tags so they display as code
         function escapeHtml(unsafe) {
-            if (!unsafe) return "";
             return unsafe
                  .replace(/&/g, "&amp;")
                  .replace(/</g, "&lt;")
@@ -595,19 +594,20 @@
                 // --- INJECT INTERACTIVE CODE PLAYGROUND ---
                 if(topic.interactiveCode) {
                     
-                    // Safely build the source document for the iframe
+                    // Build the safe source document for the iframe
+                    // We inject the CSS in style tags, the HTML in body, and JS in script tags
                     const iframeContent = `
                         <html>
                         <head>
                             <style>
                                 body { font-family: sans-serif; padding: 10px; margin: 0; }
-                                ${topic.interactiveCode.css || ''}
+                                ${topic.interactiveCode.css}
                             </style>
                         </head>
                         <body>
-                            ${topic.interactiveCode.html || ''}
+                            ${topic.interactiveCode.html}
                             <script>
-                                ${topic.interactiveCode.js || ''}
+                                ${topic.interactiveCode.js}
                             <\/script>
                         </body>
                         </html>
@@ -624,7 +624,7 @@
                             <button class="playground-tab preview-tab" onclick="switchTab('${uniqueId}', 'preview')">▶ Live Preview</button>
                         </div>
                         <div class="playground-panels">
-                            <pre class="code-panel active" id="html-panel-${uniqueId}"><code style="color:#569cd6;">${escapeHtml(topic.interactiveCode.html) || "&lt;!-- No HTML provided --&gt;"}</code></pre>
+                            <pre class="code-panel active" id="html-panel-${uniqueId}"><code style="color:#569cd6;">${escapeHtml(topic.interactiveCode.html) || "// No HTML provided"}</code></pre>
                             
                             <pre class="code-panel" id="css-panel-${uniqueId}"><code style="color:#d7ba7d;">${escapeHtml(topic.interactiveCode.css) || "/* No CSS provided */"}</code></pre>
                             
