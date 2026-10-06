@@ -1,206 +1,227 @@
-// webdesign-data.js
-// Excellent Institute - Web Designing using HTML, CSS & JavaScript (PGDCA Exclusive)
+// pgdca-web-data.js
+// Excellent Institute - Web Designing (HTML, CSS & JS) - PGDCA Exclusive
 
-const webdesignBookData = [];
+const webBookData = [];
 
 // ==========================================
-// MODULE 1: HTML ARCHITECTURE (THE SKELETON)
+// MODULE 1: HTML SKELETON & FORMS
 // ==========================================
-webdesignBookData.push({
+webBookData.push({
     id: "module1",
-    title: "Module 1: HTML Architecture (The Skeleton)",
+    title: "Module 1: HTML Skeleton & Forms",
     topics: [
         {
-            heading: "Basics of HTML and Core Tags",
-            text: `
-            <div style="background:#f1f5f9; padding:10px; border-radius:6px; margin-bottom:15px; border-left:4px solid #3b82f6;">
-                <strong>📅 Target Phase 1:</strong> Understand how web pages are structured using markup tags.
+            heading: "What is Web Design? (The House Analogy)",
+            text: `Welcome to Web Design! Building a website is exactly like building a house. <br><br>
+            🏠 <strong>HTML</strong> is the skeleton and bricks. It gives the website structure (headings, paragraphs, images).<br>
+            🎨 <strong>CSS</strong> is the paint, the curtains, and the interior design. It makes the house look beautiful (colors, layouts, fonts).<br>
+            ⚡ <strong>JavaScript</strong> is the electricity and plumbing. It makes the house actually work (buttons that click, popups that appear, forms that submit).`,
+            shortcut: "Every single website on the internet, from Google to Facebook, is built using HTML, CSS, and JavaScript.",
+            imgSrc: "" // No image needed, concept is text-driven
+        },
+        {
+            heading: "Basics of HTML & Core Tags",
+            text: `HTML stands for HyperText Markup Language. You write HTML using <strong>Tags</strong>. Tags are like sandwich bread; they wrap around your text to tell the browser what to do.<br><br>
+            <strong>The Basic Skeleton:</strong><br>
+            <div style="background:#1e293b; color:#38bdf8; padding:15px; border-radius:8px; font-family:monospace; margin-top:10px;">
+                &lt;!DOCTYPE html&gt;<br>
+                &lt;html&gt;<br>
+                &lt;head&gt;<br>
+                &nbsp;&nbsp;&lt;title&gt;My First Website&lt;/title&gt;<br>
+                &lt;/head&gt;<br>
+                &lt;body&gt;<br>
+                &nbsp;&nbsp;&lt;h1&gt;Welcome to Excellent Institute!&lt;/h1&gt;<br>
+                &nbsp;&nbsp;&lt;p&gt;This is a paragraph of text.&lt;/p&gt;<br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt;
+            </div><br>
+            The <code>&lt;h1&gt;</code> makes text huge, and the <code>&lt;p&gt;</code> makes normal paragraph text!`,
+            shortcut: "Save your file as 'index.html' and simply double-click it to view it in Google Chrome!",
+            imgSrc: ""
+        },
+        {
+            heading: "Adding Images and Links",
+            text: `A website is boring without pictures and links! <br><br>
+            <strong>How to add a Link:</strong> We use the Anchor tag <code>&lt;a&gt;</code>. The "href" tells the browser where to go.<br>
+            <div style="background:#1e293b; color:#a7f3d0; padding:10px; border-radius:8px; font-family:monospace; margin-bottom:15px;">
+                &lt;a href="https://google.com"&gt;Click here to go to Google!&lt;/a&gt;
             </div>
-            HTML (HyperText Markup Language) is not a programming language; it is the skeleton of a website. It tells the browser what is a heading, what is a paragraph, and what is an image.<br><br>
-            <strong>Core Structure:</strong> Every HTML page starts with <code>&lt;!DOCTYPE html&gt;</code>, followed by the <code>&lt;html&gt;</code> tag, which contains the <code>&lt;head&gt;</code> (for titles and hidden settings) and the <code>&lt;body&gt;</code> (where the visible content goes).<br><br>
-            <strong>Essential Tags:</strong><br>
-            - <code>&lt;h1&gt; to &lt;h6&gt;</code>: For main titles and subheadings.<br>
-            - <code>&lt;p&gt;</code>: For writing paragraphs.<br>
-            - <code>&lt;a href="url"&gt;</code>: To create clickable links.<br>
-            - <code>&lt;img src="image.jpg"&gt;</code>: To display pictures.
-            <div style="background:#eff6ff; padding:15px; border-radius:8px; border:1px solid #3b82f6; margin-top:20px;">
-                <h4 style="margin:0 0 10px 0; color:#1d4ed8;">💻 Practical Assignment</h4>
-                <ul>
-                    <li>Open Notepad or VS Code. Write a basic HTML structure. Add an H1 tag with your name, a paragraph about your hobbies, and an image of your favorite place. Save the file as <code>index.html</code> and open it in Google Chrome.</li>
-                </ul>
+            <strong>How to add an Image:</strong> We use the <code>&lt;img&gt;</code> tag. It is a special tag because it doesn't need a closing slice of bread!<br>
+            <div style="background:#1e293b; color:#fca5a5; padding:10px; border-radius:8px; font-family:monospace;">
+                &lt;img src="myphoto.jpg" alt="A beautiful scenery" width="300"&gt;
             </div>`,
-            shortcut: "In VS Code, type '!' and press Enter to instantly generate the entire basic HTML skeleton structure.",
-            imgSrc: "images/wd-01-html-tags.jpg"
+            shortcut: "The 'alt' text is super important! It tells blind people reading the website what the image is about.",
+            imgSrc: ""
         },
         {
             heading: "Forms and Input Elements",
-            text: `
-            <div style="background:#f1f5f9; padding:10px; border-radius:6px; margin-bottom:15px; border-left:4px solid #3b82f6;">
-                <strong>📅 Target Phase 2:</strong> Build interactive user data collection interfaces.
-            </div>
-            Forms allow users to send data to a website, like logging into Facebook or filling out an admission form. The entire form must be wrapped inside the <code>&lt;form&gt;</code> tag.<br><br>
-            <strong>Important Input Types:</strong><br>
-            - <code>&lt;input type="text"&gt;</code>: For names and basic typing.<br>
-            - <code>&lt;input type="email"&gt;</code>: Forces the user to type a valid email with an '@' symbol.<br>
-            - <code>&lt;input type="password"&gt;</code>: Hides the text as black dots.<br>
-            - <code>&lt;input type="radio"&gt;</code>: For selecting one option (like Gender).<br>
-            - <code>&lt;button type="submit"&gt;</code>: The button that submits the data.
-            <div style="background:#eff6ff; padding:15px; border-radius:8px; border:1px solid #3b82f6; margin-top:20px;">
-                <h4 style="margin:0 0 10px 0; color:#1d4ed8;">💻 Practical Assignment</h4>
-                <ul>
-                    <li>Create an "Excellent Institute Admission Form". Include inputs for Student Name, Phone Number, Email, a dropdown (<code>&lt;select&gt;</code>) for choosing the course (DCA/PGDCA), and a Submit button.</li>
-                </ul>
-            </div>`,
-            shortcut: "Always use the 'placeholder' attribute (e.g., placeholder='Enter your name') to give users a hint inside the input box.",
-            imgSrc: "images/wd-02-html-forms.jpg"
+            text: `How do users log in or send messages? We use Forms! A form acts like a digital envelope that sends user data to a server.<br><br>
+            Here is how you build a simple Login Box:<br>
+            <div style="background:#1e293b; color:#cbd5e1; padding:15px; border-radius:8px; font-family:monospace; margin-top:10px;">
+                &lt;form&gt;<br>
+                &nbsp;&nbsp;&lt;label&gt;Enter Username:&lt;/label&gt;<br>
+                &nbsp;&nbsp;&lt;input type="text" placeholder="Type here..."&gt;&lt;br&gt;&lt;br&gt;<br>
+                &nbsp;&nbsp;&lt;label&gt;Enter Password:&lt;/label&gt;<br>
+                &nbsp;&nbsp;&lt;input type="password"&gt;&lt;br&gt;&lt;br&gt;<br>
+                &nbsp;&nbsp;&lt;button type="submit"&gt;Login Now&lt;/button&gt;<br>
+                &lt;/form&gt;
+            </div><br>
+            Notice how <code>type="password"</code> automatically hides the letters as little black dots!`,
+            shortcut: "Always wrap your inputs inside a <form> tag, otherwise the 'Submit' button won't know what to send.",
+            imgSrc: ""
         }
     ]
 });
 
 // ==========================================
-// MODULE 2: CSS STYLING & LAYOUT (THE SKIN & CLOTHES)
+// MODULE 2: CSS STYLING & BEAUTIFUL LAYOUTS
 // ==========================================
-webdesignBookData.push({
+webBookData.push({
     id: "module2",
-    title: "Module 2: CSS Styling & Layouts (The Design)",
+    title: "Module 2: CSS Styling & Beautiful Layouts",
     topics: [
         {
             heading: "Types of CSS (Inline, Internal, External)",
-            text: `
-            <div style="background:#f1f5f9; padding:10px; border-radius:6px; margin-bottom:15px; border-left:4px solid #3b82f6;">
-                <strong>📅 Target Phase 3:</strong> Learn to add colors, fonts, and beauty to raw HTML.
-            </div>
-            CSS (Cascading Style Sheets) controls how HTML elements look. There are 3 ways to apply CSS:<br><br>
-            <strong>1. Inline CSS:</strong> Written directly inside the HTML tag. <em>(Bad for large projects)</em>.<br>
-            <code>&lt;h1 style="color: red;"&gt;</code><br><br>
-            <strong>2. Internal CSS:</strong> Written inside a <code>&lt;style&gt;</code> block in the <code>&lt;head&gt;</code> of the HTML document.<br><br>
-            <strong>3. External CSS:</strong> The professional way! You create a separate file called <code>style.css</code> and link it to your HTML using <code>&lt;link rel="stylesheet" href="style.css"&gt;</code>. This allows you to design 100 pages using just one file!
-            <div style="background:#eff6ff; padding:15px; border-radius:8px; border:1px solid #3b82f6; margin-top:20px;">
-                <h4 style="margin:0 0 10px 0; color:#1d4ed8;">💻 Practical Assignment</h4>
-                <ul>
-                    <li>Create an external <code>style.css</code> file. Target the <code>body</code> tag to give it a light gray background. Target all <code>h1</code> tags to be dark blue and centered. Link it to your previous HTML form.</li>
-                </ul>
-            </div>`,
-            shortcut: "In CSS, target an ID using the '#' symbol (e.g., #myButton), and target a Class using a '.' (e.g., .card-box).",
-            imgSrc: "images/wd-03-css-types.jpg"
+            text: `CSS (Cascading Style Sheets) is the magic paintbrush for your HTML. There are three ways to apply CSS:<br><br>
+            <strong>1. Inline CSS (Directly on the tag):</strong> Good for a quick fix, but messy.<br>
+            <code style="color:#d946ef;">&lt;h1 style="color: red;"&gt;Hello!&lt;/h1&gt;</code><br><br>
+            <strong>2. Internal CSS (Inside the Head):</strong> Great for single pages.<br>
+            <div style="background:#1e293b; color:#cbd5e1; padding:10px; border-radius:8px; font-family:monospace;">
+                &lt;style&gt;<br>
+                &nbsp;&nbsp;h1 { color: blue; font-size: 50px; }<br>
+                &lt;/style&gt;
+            </div><br>
+            <strong>3. External CSS (The Professional Way):</strong> Write all your CSS in a separate file called <code>style.css</code> and link it. This way, one CSS file can style 100 HTML pages at once!`,
+            shortcut: "Always use External CSS. It keeps your HTML clean and easy to read.",
+            imgSrc: ""
         },
         {
-            heading: "Layout Design: Flexbox & Grid",
-            text: `
-            <div style="background:#f1f5f9; padding:10px; border-radius:6px; margin-bottom:15px; border-left:4px solid #3b82f6;">
-                <strong>📅 Target Phase 4:</strong> Master modern website structuring and alignments.
-            </div>
-            Before modern CSS, placing elements side-by-side was very difficult. Now we use Flexbox and Grid!<br><br>
-            <strong>Flexbox (1-Dimensional):</strong> Perfect for aligning items in a single row or a single column (like a navigation bar). Just apply <code>display: flex;</code> to a parent container, and use <code>justify-content: center;</code> to perfectly center everything inside it.<br><br>
-            <strong>CSS Grid (2-Dimensional):</strong> Perfect for building complex photo galleries or overall website layouts. It allows you to define exact rows and columns using <code>display: grid; grid-template-columns: 1fr 1fr 1fr;</code> (which creates 3 equal columns).
-            <div style="background:#eff6ff; padding:15px; border-radius:8px; border:1px solid #3b82f6; margin-top:20px;">
-                <h4 style="margin:0 0 10px 0; color:#1d4ed8;">💻 Practical Assignment</h4>
-                <ul>
-                    <li>Create a Navbar with a Logo on the far left and 4 links (Home, About, Courses, Contact) on the far right using <code>display: flex; justify-content: space-between;</code>.</li>
-                </ul>
+            heading: "Colors, Fonts & The Box Model",
+            text: `Every single element on a website is actually a hidden rectangular box. Understanding this "Box Model" is the secret to spacing.<br><br>
+            <ul>
+                <li><strong>Padding:</strong> Space INSIDE the box (pushes the text away from the border).</li>
+                <li><strong>Border:</strong> The actual line drawn around the box.</li>
+                <li><strong>Margin:</strong> Space OUTSIDE the box (pushes this box away from other boxes).</li>
+            </ul>
+            <div style="background:#1e293b; color:#a7f3d0; padding:15px; border-radius:8px; font-family:monospace;">
+                .my-button {<br>
+                &nbsp;&nbsp;background-color: #10b981; /* Green color */<br>
+                &nbsp;&nbsp;color: white; /* Text color */<br>
+                &nbsp;&nbsp;padding: 10px 20px; /* Top/Bottom 10, Left/Right 20 */<br>
+                &nbsp;&nbsp;border-radius: 8px; /* Rounded corners! */<br>
+                }
             </div>`,
-            shortcut: "Using 'align-items: center;' in Flexbox is the easiest way to perfectly center text inside a button vertically.",
-            imgSrc: "images/wd-04-flex-grid.jpg"
+            shortcut: "Use HEX codes (like #FF0000) for exact, professional colors instead of just typing 'red'.",
+            imgSrc: ""
+        },
+        {
+            heading: "Modern Layouts (Flexbox)",
+            text: `Before Flexbox, putting two boxes side-by-side on a website was a nightmare. Flexbox makes it mathematically perfect with just 3 lines of code!<br><br>
+            Imagine you have a big <code>&lt;div class="container"&gt;</code> holding 3 smaller boxes. To put them in a perfect row:<br>
+            <div style="background:#1e293b; color:#fde047; padding:15px; border-radius:8px; font-family:monospace;">
+                .container {<br>
+                &nbsp;&nbsp;display: flex;<br>
+                &nbsp;&nbsp;justify-content: space-between; /* Spreads them out */<br>
+                &nbsp;&nbsp;align-items: center; /* Centers them vertically */<br>
+                }
+            </div><br>
+            Just like that, your navigation bar is perfectly aligned!`,
+            shortcut: "Flexbox handles 1-Dimensional layouts (Rows OR Columns). Grid handles 2-Dimensional layouts (Rows AND Columns).",
+            imgSrc: ""
         }
     ]
 });
 
 // ==========================================
-// MODULE 3: JAVASCRIPT & DOM (THE BRAIN)
+// MODULE 3: JAVASCRIPT & DOM MAGIC
 // ==========================================
-webdesignBookData.push({
+webBookData.push({
     id: "module3",
-    title: "Module 3: JavaScript & The DOM (The Brain)",
+    title: "Module 3: JavaScript & DOM Magic",
     topics: [
         {
-            heading: "Basics: Variables, Functions, and Logic",
-            text: `
-            <div style="background:#f1f5f9; padding:10px; border-radius:6px; margin-bottom:15px; border-left:4px solid #3b82f6;">
-                <strong>📅 Target Phase 5:</strong> Introduce mathematical logic and memory into the web page.
-            </div>
-            JavaScript is the programming language that makes websites think and react. <br><br>
-            <strong>Variables (Memory):</strong> We use <code>let</code> or <code>const</code> to store data. <br>
-            <em>Example:</em> <code>let studentName = "Rahul";</code><br><br>
-            <strong>Functions (Actions):</strong> A function is a block of code that does a specific job, but only runs when you call it.<br>
-            <em>Example:</em><br>
-            <code>function sayHello() {<br>
-            &nbsp;&nbsp;alert("Welcome to Excellent Institute!");<br>
-            }</code>
-            <div style="background:#eff6ff; padding:15px; border-radius:8px; border:1px solid #3b82f6; margin-top:20px;">
-                <h4 style="margin:0 0 10px 0; color:#1d4ed8;">💻 Practical Assignment</h4>
-                <ul>
-                    <li>Write a JavaScript function that asks the user for their age using <code>prompt()</code>. If the age is above 18, use <code>console.log()</code> to print "Eligible for admission". If below 18, print "Not Eligible".</li>
-                </ul>
-            </div>`,
-            shortcut: "Press F12 in Google Chrome and go to the 'Console' tab to test your JavaScript code instantly.",
-            imgSrc: "images/wd-05-js-basics.jpg"
+            heading: "Basics of JavaScript (Variables & Data)",
+            text: `HTML and CSS are dead; they just sit there. JavaScript brings the website to life! It is a real programming language.<br><br>
+            <strong>Variables</strong> are like named buckets that hold data.<br>
+            <div style="background:#1e293b; color:#93c5fd; padding:15px; border-radius:8px; font-family:monospace;">
+                // Let's create some variables!<br>
+                let studentName = "Rahul"; // This is a String (Text)<br>
+                let studentAge = 22; // This is a Number<br>
+                let isPassed = true; // This is a Boolean (True/False)<br><br>
+                console.log("Welcome " + studentName);
+            </div><br>
+            You can view <code>console.log()</code> messages by Right-Clicking your website > Inspect > Console.`,
+            shortcut: "Press F12 in Chrome to open Developer Tools and see your JavaScript errors.",
+            imgSrc: ""
         },
         {
-            heading: "Using the DOM & Event Handling",
-            text: `
-            <div style="background:#f1f5f9; padding:10px; border-radius:6px; margin-bottom:15px; border-left:4px solid #3b82f6;">
-                <strong>📅 Target Phase 6:</strong> Make HTML buttons perform powerful JavaScript actions.
-            </div>
-            <strong>The DOM (Document Object Model):</strong> JavaScript cannot "see" your website directly. The DOM is the bridge that allows JavaScript to grab HTML tags and change them. We use <code>document.getElementById("myTitle")</code> to grab an element.<br><br>
-            <strong>Event Handling:</strong> An Event is an action taken by the user, like clicking a button or hovering the mouse. We can attach our JavaScript functions to these events using attributes like <code>onclick=""</code>.
-            <div style="background:#eff6ff; padding:15px; border-radius:8px; border:1px solid #3b82f6; margin-top:20px;">
-                <h4 style="margin:0 0 10px 0; color:#1d4ed8;">💻 Practical Assignment</h4>
-                <ul>
-                    <li>Create an HTML button that says "Change Color". Write a JS function using the DOM that grabs the website's background and changes it to Dark Mode (black) when the button is clicked.</li>
-                </ul>
+            heading: "Functions and Event Handling",
+            text: `A <strong>Function</strong> is a reusable block of code. Think of it like a recipe. An <strong>Event</strong> is when a user does something (like clicking a button). We tie them together!<br><br>
+            <div style="background:#1e293b; color:#fca5a5; padding:15px; border-radius:8px; font-family:monospace;">
+                // Step 1: Write the Function recipe<br>
+                function sayHello() {<br>
+                &nbsp;&nbsp;alert("Hello Excellent Student!");<br>
+                }<br>
+            </div><br>
+            Now, in your HTML, attach that function to a button click!<br>
+            <div style="background:#1e293b; color:#cbd5e1; padding:10px; border-radius:8px; font-family:monospace; margin-top:10px;">
+                &lt;button onclick="sayHello()"&gt;Click Me!&lt;/button&gt;
             </div>`,
-            shortcut: "Using 'element.innerHTML' allows JavaScript to completely rewrite the text inside an HTML tag on the live website.",
-            imgSrc: "images/wd-06-dom-events.jpg"
+            shortcut: "Events can be 'onclick', 'onmouseover' (hover), or 'onkeyup' (typing).",
+            imgSrc: ""
+        },
+        {
+            heading: "Using the DOM (Document Object Model)",
+            text: `The DOM is how JavaScript talks to HTML. When the browser loads your HTML, it creates a "tree" of all your tags. JavaScript can grab any branch of that tree and change it live!<br><br>
+            Imagine you have an empty paragraph: <code>&lt;p id="statusBox"&gt;&lt;/p&gt;</code><br><br>
+            Let's use JavaScript to grab it by its ID and change its text:<br>
+            <div style="background:#1e293b; color:#a7f3d0; padding:15px; border-radius:8px; font-family:monospace;">
+                // Grab the HTML element<br>
+                let box = document.getElementById("statusBox");<br><br>
+                // Change its text and style live on the screen!<br>
+                box.innerText = "Payment Successful!";<br>
+                box.style.color = "green";
+            </div>`,
+            shortcut: "DOM manipulation is the secret behind dark mode toggles, live search results, and pop-up menus.",
+            imgSrc: ""
         }
     ]
 });
 
 // ==========================================
-// MODULE 4: DEPLOYMENT & CAPSTONE (GOING LIVE)
+// MODULE 4: GOING LIVE (RESPONSIVE HOSTING)
 // ==========================================
-webdesignBookData.push({
+webBookData.push({
     id: "module4",
-    title: "Module 4: Responsive Design & Deployment",
+    title: "Module 4: Responsive Design & Basic Hosting",
     topics: [
         {
             heading: "Responsive Design (Mobile Friendly)",
-            text: `
-            <div style="background:#f1f5f9; padding:10px; border-radius:6px; margin-bottom:15px; border-left:4px solid #3b82f6;">
-                <strong>📅 Target Phase 7:</strong> Ensure your website looks perfect on all Mobile phones and Tablets.
-            </div>
-            If you build a website on a laptop, it might look broken and squished on a small mobile phone. To fix this, we use CSS <strong>Media Queries</strong>.<br><br>
-            Media Queries tell the CSS to change the layout if the screen gets too small. <br>
-            <em>Example:</em><br>
-            <code>@media (max-width: 768px) {<br>
-            &nbsp;&nbsp;.navbar { flex-direction: column; }<br>
-            }</code><br>
-            This code detects if the screen is smaller than an iPad (768px). If it is, it forces the horizontal navigation bar to stack vertically, making it easy to tap with a finger!
-            <div style="background:#eff6ff; padding:15px; border-radius:8px; border:1px solid #3b82f6; margin-top:20px;">
-                <h4 style="margin:0 0 10px 0; color:#1d4ed8;">💻 Practical Assignment</h4>
-                <ul>
-                    <li>Take the 4-column CSS Grid layout you built earlier. Write a Media Query so that if viewed on a mobile phone (max-width: 600px), it changes to a 1-column stack layout.</li>
-                </ul>
+            text: `A website looks great on a giant laptop, but what happens when a user opens it on a tiny mobile phone? It shrinks and becomes unreadable! <br><br>
+            We use CSS <strong>Media Queries</strong> to detect the screen size and completely change the CSS rules for mobile phones.<br>
+            <div style="background:#1e293b; color:#cbd5e1; padding:15px; border-radius:8px; font-family:monospace;">
+                /* If the screen is SMALLER than 600px (Mobile)... */<br>
+                @media (max-width: 600px) {<br>
+                &nbsp;&nbsp;.container {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;flex-direction: column; /* Stack boxes top-to-bottom! */<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-size: 14px; /* Shrink text */<br>
+                &nbsp;&nbsp;}<br>
+                }
             </div>`,
-            shortcut: "Press Ctrl+Shift+I in Chrome and click the 'Mobile Device' icon to test how your website looks on an iPhone or Android screen.",
-            imgSrc: "images/wd-07-responsive.jpg"
+            shortcut: "Always design for Mobile first! It's easier to scale a mobile site up than squish a desktop site down.",
+            imgSrc: ""
         },
         {
-            heading: "Basic Hosting (GitHub Pages) & Capstone",
-            text: `
-            <div style="background:#f1f5f9; padding:10px; border-radius:6px; margin-bottom:15px; border-left:4px solid #3b82f6;">
-                <strong>📅 Final Target:</strong> Publish your website live to the real internet.
-            </div>
-            Building a website on your laptop is great, but nobody else can see it. You need <strong>Hosting</strong> (a server) to put it on the internet. <br><br>
-            <strong>GitHub Pages:</strong> This is a free hosting service provided by Microsoft. You create an account, upload your <code>index.html</code>, <code>style.css</code>, and image files to a 'Repository', and go to settings to activate Pages. Within 5 minutes, GitHub generates a real, live URL link that you can send to anyone in the world!
-            <div style="background:#eff6ff; padding:15px; border-radius:8px; border:1px solid #3b82f6; margin-top:20px;">
-                <h4 style="margin:0 0 10px 0; color:#1d4ed8;">💻 Final Project (Capstone)</h4>
-                <ul>
-                    <li><strong>Task:</strong> Build a complete 3-page website for "Excellent Institute" featuring a Home Page, a Course Grid, and an interactive JS Contact Form.</li>
-                    <li><strong>Execution:</strong> Apply external CSS, ensure it is fully mobile-responsive via Media Queries, and upload the final code to GitHub Pages to get your live URL.</li>
-                </ul>
-            </div>`,
-            shortcut: "Always name your main homepage 'index.html'. Web servers automatically look for that specific file name to display first.",
-            imgSrc: "images/wd-08-hosting.jpg"
+            heading: "Hosting Your Website for Free (GitHub)",
+            text: `Your website is amazing, but right now it only lives on your local 'C: Drive'. Nobody else in the world can see it. You need a <strong>Server</strong>.<br><br>
+            <strong>GitHub Pages</strong> is a free server provided by Microsoft.<br>
+            1. Create a free account on GitHub.com.<br>
+            2. Create a new "Repository" (a digital folder).<br>
+            3. Upload your <code>index.html</code>, <code>style.css</code>, and your images into the folder.<br>
+            4. Go to Settings > Pages and turn it on.<br><br>
+            Within 2 minutes, GitHub will give you a live global link (e.g., <em>https://yourname.github.io</em>) to share with the world!`,
+            shortcut: "Congratulations! You have officially coded, styled, and deployed a live website to the internet.",
+            imgSrc: ""
         }
     ]
 });
