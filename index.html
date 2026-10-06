@@ -321,8 +321,7 @@
             <h2 onclick="loadDashboard()">Excellent Institute</h2>
         </div>
         <div class="action-btns">
-            <!-- Printing a live preview box is messy, so we encourage digital learning -->
-            <button style="background:var(--primary); color:white;">Web Design Portal</button>
+            <button onclick="window.print()">🖨️ Print / PDF</button>
         </div>
     </div>
 
@@ -510,6 +509,56 @@
                             <style>
                                 body { font-family: sans-serif; padding: 10px; margin: 0; }
                                 ${topic.interactiveCode.css}
+
+/* --- Print & PDF Export Styling --- */
+
+                                @media print {
+                                    body, .main-container { height: auto; overflow: visible; display: block; background-color: transparent !important; }
+                                    .sidebar, .header, .action-btns, .dashboard-grid, .hero { display: none !important; }
+                                    .content-area { padding: 0; cursor: auto; background-color: transparent !important; }
+                                    .content-wrapper { margin: 0; padding: 0; box-shadow: none; border: none; max-width: 100%; background: transparent !important; }
+                                    .topic-card { box-shadow: none; border: none; padding: 0; margin-bottom: 40px; page-break-inside: auto; background: transparent; }
+                                    .chapter-header { box-shadow: none; border: none; padding: 0; margin-bottom: 20px; background: transparent; border-left: none; page-break-before: always;}
+                                    .note-section { pointer-events: auto; }
+                                    .watermark-bg { display: block; opacity: 0.08; width: 60vw; max-width: 600px; }
+                                    h1 { color: #000; }
+                                    h3 { color: #000; border-bottom: 1px solid #ccc; }
+                                    img { page-break-inside: avoid; border: none; }
+                                    .shortcut-box { border: 1px solid #000 !important; background: transparent !important; color: #000 !important; }
+
+/* --- MAGICAL PRINT REORGANIZATION FOR INTERACTIVE CODE --- */
+                                    .playground-tabs { display: none !important; } /* Hide the clickable tabs on paper */
+                                    .code-playground { border: none !important; box-shadow: none !important; margin-bottom: 40px !important; background: transparent !important; }
+                                    
+/* Force all code panels to show, stack, and turn white/black for the printer */
+                                    .code-panel { 
+                                        display: block !important; 
+                                        background: #f8fafc !important; 
+                                        color: #000 !important; 
+                                        border: 1px solid #94a3b8 !important; 
+                                        padding: 15px !important; 
+                                        margin-bottom: 20px !important; 
+                                        height: auto !important; 
+                                        max-height: none !important; 
+                                        page-break-inside: avoid; 
+                                        overflow: visible !important;
+                                    }
+            
+/* Automatically add titles above the code boxes on the printed paper */
+                                    .code-panel[id^="html-panel"]::before { content: "📄 HTML Code:"; display: block; font-weight: bold; margin-bottom: 10px; color: #1e40af; border-bottom: 1px solid #ccc; padding-bottom: 5px;}
+                                    .code-panel[id^="css-panel"]::before { content: "🎨 CSS Code:"; display: block; font-weight: bold; margin-bottom: 10px; color: #1e40af; border-bottom: 1px solid #ccc; padding-bottom: 5px;}
+                                    .code-panel[id^="js-panel"]::before { content: "⚡ JavaScript Code:"; display: block; font-weight: bold; margin-bottom: 10px; color: #1e40af; border-bottom: 1px solid #ccc; padding-bottom: 5px;}
+            
+/* Force the live preview frame to print at the bottom of the stack */
+                                    .preview-iframe { 
+                                        display: block !important; 
+                                        height: 350px !important; 
+                                        border: 2px solid #0f172a !important; 
+                                        margin-bottom: 20px !important; 
+                                        page-break-inside: avoid; 
+                                    }
+                                }
+                                
                             </style>
                         </head>
                         <body>
