@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <script>
+        // Detect if running inside Excellent Institute Mobile App
+        function isMobileApp() {
+            return !!(window.isExcellentMobileApp || window.location.hash.includes('admin') || window.location.search.includes('target=') || window.location.search.includes('chapter='));
+        }
+        if (isMobileApp()) {
+            localStorage.setItem('excellent_auth', 'true');
+        }
+
         // Universal Gatekeeper Script
         if (localStorage.getItem('excellent_auth') !== 'true') {
             document.addEventListener("DOMContentLoaded", function() {
+                if (isMobileApp()) return;
                 document.body.style.visibility = "hidden"; 
                 document.body.style.overflow = "hidden";
                 
