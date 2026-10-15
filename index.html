@@ -399,8 +399,16 @@
         // PGDCA Exclusive Lock
         let isPgdcaUnlocked = false; 
 
+        // Universal Data Hook for Flutter Offline PDF Builder
+        function getCourseData() {
+            return typeof webBookData !== 'undefined' ? webBookData : null;
+        }
+
         // 1. Initialize Application
         function initApp() {
+            if (isMobileApp()) {
+                isPgdcaUnlocked = true;
+            }
             if (typeof webBookData === 'undefined' || webBookData.length === 0) {
                 contentDisplay.innerHTML = `<h2 style="color:red; text-align:center; padding:50px;">Awaiting pgdca-web-data.js File...</h2>`;
                 return;
